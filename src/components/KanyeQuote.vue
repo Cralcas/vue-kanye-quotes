@@ -22,9 +22,9 @@ const handleSubmit = async () => {
     <i class="text-3xl font-bold">{{
       quote ? `"${quote}"` : "Fetch a quote!"
     }}</i>
-    <p class="text-2xl">-Kanye West</p>
-    <form @submit.prevent="handleSubmit">
-      <button class="btn btn-active btn-neutral mt-10">New Quote</button>
-    </form>
+    <p v-if="quote" class="text-2xl">-Kanye West</p>
   </div>
+  <form @submit.prevent="handleSubmit">
+    <button class="btn btn-active btn-neutral mt-10">New Quote</button>
+  </form>
 </template>
