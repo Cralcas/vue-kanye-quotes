@@ -1,30 +1,16 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { getData } from "../service/quoteService";
+import QuoteForm from "./QuoteForm.vue";
+import QuoteDisplay from "./QuoteDisplay.vue";
 
 const quote = ref("");
 
-const fetchQuote = async () => {
-  try {
-    quote.value = await getData();
-  } catch (error) {
-    console.error("Error fetching data:", error);
-  }
-};
-
-const handleSubmit = async () => {
-  await fetchQuote();
+const updateQuote = (newQuote: string) => {
+  quote.value = newQuote;
 };
 </script>
 
 <template>
-  <div class="text-center">
-    <i class="text-3xl font-bold">{{
-      quote ? `"${quote}"` : "Fetch a quote!"
-    }}</i>
-    <p v-if="quote" class="text-2xl">-Kanye West</p>
-  </div>
-  <form @submit.prevent="handleSubmit">
-    <button class="btn btn-active btn-neutral mt-10">New Quote</button>
-  </form>
+  <QuoteDisplay :quote="quote" />
+  <QuoteForm @fetchQuote="updateQuote" />
 </template>
