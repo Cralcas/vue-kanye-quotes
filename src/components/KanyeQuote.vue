@@ -12,5 +12,5 @@ const updateQuote = (newQuote: string) => {
 
 <template>
   <QuoteDisplay :quote="quote" />
-  <QuoteForm @fetchQuote="updateQuote" />
+  <QuoteForm @getQuote="updateQuote" />
 </template>

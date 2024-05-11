@@ -3,13 +3,13 @@ import { defineEmits } from "vue";
 import { getData } from "../service/quoteService";
 
 const emit = defineEmits<{
-  (e: "fetchQuote", quote: string): void;
+  (e: "getQuote", quote: string): void;
 }>();
 
 const handleSubmit = async () => {
   try {
     const newQuote = await getData();
-    emit("fetchQuote", newQuote);
+    emit("getQuote", newQuote);
   } catch (error) {
     console.error("Error fetching data:", error);
   }
